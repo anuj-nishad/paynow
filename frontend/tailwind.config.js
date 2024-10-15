@@ -1,0 +1,24 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      fontFamily:{
+      'poppins': ['Poppins', 'sans-serif'],
+      'roboto': ['Roboto', 'sans-serif']
+      },
+      backgroundColor:{
+        'primary': '#b4cfed',
+        'secondary': '#7ca8de',
+        'tertiary': '#324376',
+        'quaternary': '#222b49',
+      }
+      
+    },
+  },
+  plugins: [],
+}
+
