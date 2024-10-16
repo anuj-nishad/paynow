@@ -5,6 +5,7 @@ import { BottomText } from '../components/BottomText'
 import { Navbar } from '../components/Navbar';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 export function Signup() {
   const navigate = useNavigate();
@@ -43,5 +44,6 @@ export function Signup() {
       </form>
       <BottomText label={'Already have an account?'} buttonText={'Sign in'} to={'/login'}/>
     </div>
+    <Footer/>
   </div>
 }

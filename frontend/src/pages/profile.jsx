@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 import { checkAuth } from "../common/checkAuth"
 import { fetchAccount } from "../common/fetchAccount"
+import Footer from "../components/Footer"
 
 export function Profile() {
   const navigate = useNavigate()
@@ -104,6 +105,7 @@ export function Profile() {
           </>
         )}
       </div>
+      <Footer/>
     </div >
     ):<h1>Loading...</h1>}
     </>     

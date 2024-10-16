@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { checkAuth } from "../common/checkAuth";
 import { fetchAccount } from "../common/fetchAccount";
+import Footer from "../components/Footer";
 
 export function Transactions() {
 
@@ -33,7 +34,7 @@ export function Transactions() {
 
   return <>
     {isAuthenticated ? (
-      <div className="bg-primary min-h-screen px-10 font-poppins py-32 md:px-32 lg:px-48 xl:px-60 2xl:px-80">
+      <div className="bg-primary min-h-screen px-10 font-poppins py-32 md:px-32 lg:px-48 xl:px-60 2xl:px-80 relative">
         <Navbar name={user.firstName} />
         <div className='bg-white rounded-xl flex flex-col justify-center font-poppins px-8 py-7 mb-8 shadow-xl'>
           <p className="mr-3 font-medium text-gray-700">Your Balance :</p>
@@ -66,7 +67,7 @@ export function Transactions() {
                   </>
                 ) : (
                   <>
-                    <p className="font-normal text-black mr-5 text-xl mx-3   mb-3 sm:mb-0 sm:text-2xl"><span className="text-green-700 font-bold">&#8377;{x.amount}</span> recieved from <span className="font-medium">{x.receiptFirstName} {x.receiptLastName}</span></p>
+                    <p className="font-normal text-black mr-5 text-xl mx-10 mb-3 sm:mb-0 sm:text-2xl"><span className="text-green-700 font-bold">&#8377;{x.amount}</span> recieved from <span className="font-medium">{x.receiptFirstName} {x.receiptLastName}</span></p>
                     <div className="flex font-medium text-blue-900 mb-2 sm:mb-0">{formatDate(x.eventTime)}</div>
                   </>
                 )}
@@ -74,6 +75,7 @@ export function Transactions() {
             )})}
           </div>
         </div>
+      <Footer/>
       </div>
     ) : (
       <h1>Loading</h1>

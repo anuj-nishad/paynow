@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react'
 import { checkAuth } from '../common/checkAuth';
 import { BottomText } from '../components/BottomText';
+import Footer from '../components/Footer';
 
 export function Transfer() {
   const [searchParams] = useSearchParams();
@@ -81,6 +82,7 @@ export function Transfer() {
             </div>
           </div>
         </div>
+      <Footer/>
       </div>
     ) : (
       <h1>Loading....</h1>

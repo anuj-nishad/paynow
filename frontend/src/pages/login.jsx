@@ -6,6 +6,7 @@ import { Navbar } from '../components/Navbar'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import Footer from '../components/Footer'
 
 export function Login() {
 
@@ -22,9 +23,7 @@ export function Login() {
       const token = response.data.token;
 
       localStorage.setItem('token', token);
-      setTimeout(()=>{
         navigate('/dashboard')
-      },500)
     }
     catch (err) {
       console.log("Error: ", err);
@@ -47,5 +46,6 @@ export function Login() {
       </form>
       <BottomText label={'Didn\'t have a account?'} buttonText={'Sign up'} to={'/signup'} />
     </div>
+    <Footer/>
     </div>
 }
