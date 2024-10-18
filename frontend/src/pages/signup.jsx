@@ -18,7 +18,7 @@ export function Signup() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-        const response = await axios.post('http://localhost:3000/api/v1/user/signup', data);
+        const response = await axios.post('https://paynow-api.onrender.com/api/v1/user/signup', data);
         console.log('User created:', response.data);
 
         const token = response.data.token;

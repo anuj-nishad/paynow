@@ -16,7 +16,7 @@ export function User({userId}) {
   useEffect(()=>{
     async function fetchUsers(){
       try{
-        const response = await axios.get('http://localhost:3000/api/v1/user/bulk?filter='+ filter)
+        const response = await axios.get('https://paynow-api.onrender.com/api/v1/user/bulk?filter='+ filter)
         const filteredUsers = response.data.users.filter(user=> user.id != currentId)
         setUsers(filteredUsers)
       }

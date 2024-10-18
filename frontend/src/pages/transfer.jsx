@@ -28,7 +28,7 @@ export function Transfer() {
 
   const handleMoneySent = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:3000/api/v1/account/transfer', {
+    axios.post('https://paynow-api.onrender.com/api/v1/account/transfer', {
       toUserId: id,
       amount: amount
     }, {

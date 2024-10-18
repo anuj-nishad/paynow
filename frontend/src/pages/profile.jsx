@@ -37,7 +37,7 @@ export function Profile() {
       delete data.lastName;
     
     try {
-      await axios.put('http://localhost:3000/api/v1/user', data,{
+      await axios.put('https://paynow-api.onrender.com/api/v1/user', data,{
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         }});

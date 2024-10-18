@@ -8,7 +8,7 @@ export const checkAuth = async (setIsAuthenticated, setUser) => {
     return;
   }
   try {
-    const response = await axios.get('http://localhost:3000/api/v1/me', {
+    const response = await axios.get('https://paynow-api.onrender.com/api/v1/me', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },

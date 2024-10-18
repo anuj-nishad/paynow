@@ -19,7 +19,7 @@ export function Login() {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/user/login', data);
+      const response = await axios.post('https://paynow-api.onrender.com/api/v1/user/login', data);
       const token = response.data.token;
 
       localStorage.setItem('token', token);
