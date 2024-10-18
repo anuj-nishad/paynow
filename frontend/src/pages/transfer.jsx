@@ -56,7 +56,7 @@ export function Transfer() {
 
   return <>
     {isAuthenticated ? (
-      <div className='bg-primary min-h-screen flex justify-center items-center'>
+      <div className='bg-primary min-h-screen flex justify-center items-center relative'>
         <Navbar name={user.firstName} />
         <div className='bg-white h-max py-5 pt-8 px-8 rounded-xl flex flex-col justify-between items-center font-poppins  scale-90 sm:scale-100'>
           <p className='text-3xl font-semibold mb-12'>Send Money</p>
