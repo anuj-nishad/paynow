@@ -30,11 +30,11 @@ export function User({userId}) {
   return (
     <>
     <div className='bg-white rounded-xl flex flex-col justify-center font-poppins px-8 py-8 pb-10 shadow-xl h-auto mt-5'>
-      <p className="font-semibold text-2xl">Users</p>
+      <p className="font-semibold text-2xl sm:text-3xl">Users</p>
       <input type="text" placeholder="Search users..." className="border-b mt-6 outline-none py-2" onChange={handleFilter} />
       <div className="mt-2">
     {users.map((user)=>(
-      <div key={user.id} className="flex items-center justify-between mt-3 shadow">
+      <div key={user.id} className="flex items-center justify-between mt-3 pb-3 border-b-2">
         <UserProfile user={user}/>
         <Button2 user={user} buttonText={'Send Money'} />
       </div>

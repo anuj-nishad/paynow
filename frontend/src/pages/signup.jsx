@@ -30,7 +30,7 @@ export function Signup() {
     }
 };
 
-  return <div className='bg-primary min-h-screen flex justify-center items-center'>
+  return <div className='bg-primary min-h-screen flex justify-center items-center relative'>
     <Navbar name={'Sign in'}/>
     <div className='bg-white h-max py-2 rounded-xl flex flex-col justify-center items-center font-poppins scale-90 sm:scale-100 sm:py-6'>
       <Heading heading={'Sign up'} subHeading={'Create your account'} />

@@ -32,7 +32,7 @@ export function Login() {
 
   }
 
-  return <div className='bg-primary min-h-screen flex justify-center items-center'>
+  return <div className='bg-primary min-h-screen flex justify-center items-center relative'>
     <Navbar name={'Sign up'} />
     <div className='bg-white h-max py-5 rounded-xl flex flex-col justify-center items-center font-poppins scale-90 sm:scale-100'>
       <Heading heading={'Sign in'} subHeading={'Enter your credentials'} />

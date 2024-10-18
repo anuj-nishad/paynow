@@ -65,7 +65,7 @@ export function Profile() {
     {isAuthenticated?(
       <div className='bg-primary min-h-screen flex justify-center items-center'>
       <Navbar name={user.firstName} />
-      <div className='bg-white h-max py-4 px-7 rounded-xl flex flex-col justify-center items-center font-poppins'>
+      <div className='bg-white h-max py-4 px-5 rounded-xl flex flex-col justify-center items-center font-poppins scale-90 sm:scale-100'>
         {isEditProfile ? (
           <>
             <p className="font-medium text-black mr-5 my-2 mb-10 text-3xl mx-8">Edit Profile</p>
