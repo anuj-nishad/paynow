@@ -32,9 +32,9 @@ export function Signup() {
 
   return <div className='bg-primary min-h-screen flex justify-center items-center'>
     <Navbar name={'Sign in'}/>
-    <div className='bg-white h-max py-5 rounded-xl flex flex-col justify-center items-center font-poppins'>
+    <div className='bg-white h-max py-2 rounded-xl flex flex-col justify-center items-center font-poppins scale-90 sm:scale-100 sm:py-6'>
       <Heading heading={'Sign up'} subHeading={'Create your account'} />
-      <form className='flex flex-col items-center mx-10' onSubmit={handleSubmit}>
+      <form className='flex flex-col items-center mx-6 sm:mx-10' onSubmit={handleSubmit}>
         <InputBox typeinput={'text'} placeholdertext={'Username'} name={'username'}/>
         <InputBox typeinput={'text'} placeholdertext={'First Name'} name={'firstName'}/>
         <InputBox typeinput={'text'} placeholdertext={'Last Name'} name={'lastName'}/>
