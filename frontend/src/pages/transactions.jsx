@@ -29,7 +29,9 @@ export function Transactions() {
   }, [isAuthenticated, navigate]);
 
   if (isAuthenticated === null) {
-    return <div>Loading.....</div>
+    return <div className="flex justify-center items-center bg-primary min-h-screen px-10 font-poppins py-32 md:px-32 lg:px-48 xl:px-60 2xl:px-80 relative">
+    <div>Loading.....</div>
+    </div>
   }
 
   return <>
@@ -67,7 +69,7 @@ export function Transactions() {
                   </>
                 ) : (
                   <>
-                    <p className="font-normal text-black mr-5 text-xl mx-10 mb-3 sm:mb-0 sm:text-2xl"><span className="text-green-700 font-bold">&#8377;{x.amount}</span> recieved from <span className="font-medium">{x.receiptFirstName} {x.receiptLastName}</span></p>
+                    <p className="font-normal text-black mr-5 text-xl mx-10 mb-3 sm:mb-0 sm:text-2xl sm:mx-3"><span className="text-green-700 font-bold">&#8377;{x.amount}</span> recieved from <span className="font-medium">{x.receiptFirstName} {x.receiptLastName}</span></p>
                     <div className="flex font-medium text-blue-900 mb-2 sm:mb-0">{formatDate(x.eventTime)}</div>
                   </>
                 )}

@@ -49,7 +49,9 @@ export function Transfer() {
   }, [isAuthenticated, navigate]);
 
   if(isAuthenticated === null){
-    return <div>Loading.....</div>
+    return <div className="flex justify-center items-center bg-primary min-h-screen px-10 font-poppins py-32 md:px-32 lg:px-48 xl:px-60 2xl:px-80 relative">
+    <div>Loading.....</div>
+    </div>
   } 
 
   return <>
