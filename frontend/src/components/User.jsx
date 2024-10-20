@@ -7,7 +7,8 @@ export function User({userId}) {
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState('');
   
-  const currentId = userId
+  const currentId = userId;
+  
   const handleFilter=(e)=>{
     const string = e.target.value;
     const word = string.charAt(0).toUpperCase() + string.slice(1); 

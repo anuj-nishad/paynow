@@ -16,6 +16,7 @@ export function Transfer() {
   const letter = name[0];
   const [amount, setAmount] = useState(0);
   const [transferSuccess, setTransferSuccess] = useState(false)
+  const [noAmount, setNoAmount] = useState(false)
   const [notEnoughMoney, setNotEnoughMoney] = useState(false)
 
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -28,6 +29,12 @@ export function Transfer() {
 
   const handleMoneySent = (e) => {
     e.preventDefault()
+
+    if(!amount || amount<=0){
+      setNoAmount(true)
+      return;
+    }
+
     axios.post('https://paynow-api.onrender.com/api/v1/account/transfer', {
       toUserId: id,
       amount: amount
@@ -37,22 +44,23 @@ export function Transfer() {
       }
     }).then(() => {
       setTransferSuccess(true);
-    }).catch(()=>{
+    }).catch(() => {
       setTransferSuccess(false);
       setNotEnoughMoney(true);
     })
   }
 
+
   useEffect(() => {
-    if(isAuthenticated === false)
+    if (isAuthenticated === false)
       navigate('/login')
   }, [isAuthenticated, navigate]);
 
-  if(isAuthenticated === null){
+  if (isAuthenticated === null) {
     return <div className="flex justify-center items-center bg-primary min-h-screen px-10 font-poppins py-32 md:px-32 lg:px-48 xl:px-60 2xl:px-80 relative">
-    <div>Loading.....</div>
+      <div>Loading.....</div>
     </div>
-  } 
+  }
 
   return <>
     {isAuthenticated ? (
@@ -69,22 +77,25 @@ export function Transfer() {
               <div>
                 <input onChange={(e) => setAmount(e.target.value)} type='number' placeholder='Amount (in Rs)' className='py-3 outline-none border-b-2 my-2 w-[300px] px-2' name='amount' required />
               </div>
-              {notEnoughMoney?(
+              {notEnoughMoney ? (
                 <div className='text-red-500 text-sm mt-2'>Insufficient Balance !</div>
-              ):null}
+              ) :null}
+              {noAmount ? (
+                <div className='text-red-500 text-sm mt-2'>Enter an amount !</div>
+              ) :null}
               {transferSuccess ? (
                 <div className='bg-green-500 text-white w-full p-3 rounded-md my-5'>
                   <p>Money sent successfully &#10003;</p>
                 </div>
               ) : (<button onClick={handleMoneySent} type="submit" className="bg-blue-700 text-white w-full py-3 rounded-md my-4 hover:bg-blue-800">Send Money</button>
               )}
-               <div className=" w-full flex justify-center">
-              <BottomText label={''} buttonText={'Home'} to={'/dashboard'} />
-            </div>
+              <div className=" w-full flex justify-center">
+                <BottomText label={''} buttonText={'Home'} to={'/dashboard'} />
+              </div>
             </div>
           </div>
         </div>
-      <Footer/>
+        <Footer />
       </div>
     ) : (
       <h1>Loading....</h1>

@@ -63,7 +63,7 @@ export function Profile() {
   return (
     <>
     {isAuthenticated?(
-      <div className='bg-primary min-h-screen flex justify-center items-center'>
+      <div className='bg-primary min-h-screen flex justify-center items-center relative'>
       <Navbar name={user.firstName} />
       <div className='bg-white h-max py-4 px-5 rounded-xl flex flex-col justify-center items-center font-poppins scale-90 sm:scale-100'>
         {isEditProfile ? (
