@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 
+const getLocalTime = () => {
+  const now = new Date();
+  return new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })); 
+};
+
 const AccountSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -26,7 +31,7 @@ const AccountSchema = new mongoose.Schema({
         },
         eventTime: {
           type: Date,
-          default: Date.now
+          default: getLocalTime
         },
         transactionType: {  
           type: String,
