@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom'
 import { Navbar } from '../components/Navbar'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react'
 import { checkAuth } from '../common/checkAuth';
@@ -11,6 +11,7 @@ import Footer from '../components/Footer';
 
 export function Transfer() {
   const [searchParams] = useSearchParams();
+  const inputRef = useRef("");
   const id = searchParams.get("id");
   const name = searchParams.get("name");
   const letter = name[0];
@@ -18,7 +19,7 @@ export function Transfer() {
   const [transferSuccess, setTransferSuccess] = useState(false)
   const [noAmount, setNoAmount] = useState(false)
   const [notEnoughMoney, setNotEnoughMoney] = useState(false)
-
+  const [loading, setLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -28,13 +29,13 @@ export function Transfer() {
   }, []);
 
   const handleMoneySent = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if(!amount || amount<=0){
       setNoAmount(true)
       return;
     }
-
+    setLoading(true)
     axios.post('https://paynow-api.onrender.com/api/v1/account/transfer', {
       toUserId: id,
       amount: amount
@@ -43,8 +44,11 @@ export function Transfer() {
         Authorization: 'Bearer ' + localStorage.getItem('token')
       }
     }).then(() => {
+      inputRef.current.value = "";
+      setLoading(false);
       setTransferSuccess(true);
     }).catch(() => {
+      setLoading(false)
       setTransferSuccess(false);
       setNotEnoughMoney(true);
     })
@@ -75,7 +79,7 @@ export function Transfer() {
             </div>
             <div className='mt-2'>
               <div>
-                <input onChange={(e) => setAmount(e.target.value)} type='number' placeholder='Amount (in Rs)' className='py-3 outline-none border-b-2 my-2 w-[300px] px-2' name='amount' required />
+                <input ref={inputRef} onChange={(e) => setAmount(e.target.value)} type='number' placeholder='Amount (in Rs)' className='py-3 outline-none border-b-2 my-2 w-[300px] px-2' name='amount' required />
               </div>
               {notEnoughMoney ? (
                 <div className='text-red-500 text-sm mt-2'>Insufficient Balance !</div>
@@ -87,7 +91,17 @@ export function Transfer() {
                 <div className='bg-green-500 text-white w-full p-3 rounded-md my-5'>
                   <p>Money sent successfully &#10003;</p>
                 </div>
-              ) : (<button onClick={handleMoneySent} type="submit" className="bg-blue-700 text-white w-full py-3 rounded-md my-4 hover:bg-blue-800">Send Money</button>
+              ) : (<button
+                onClick={handleMoneySent}
+                type="submit"
+                className="bg-blue-700 text-white w-full py-3 rounded-md my-4 hover:bg-blue-800 flex justify-center items-center gap-2 disabled:opacity-50"
+                disabled={loading}
+              >
+                {loading && (
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                )}
+                Send Money
+              </button>
               )}
               <div className=" w-full flex justify-center">
                 <BottomText label={''} buttonText={'Home'} to={'/dashboard'} />

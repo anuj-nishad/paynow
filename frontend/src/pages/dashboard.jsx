@@ -40,7 +40,7 @@ export function Dashboard() {
         <Navbar name={user.firstName} />
         <div className='bg-white rounded-xl flex flex-col justify-center font-poppins px-8 py-4 mb-5 shadow-xl sm:py-6'>
           <p className="mr-3 font-medium text-gray-700">Your Balance :</p>
-          <p className="mt-2 font-bold text-4xl text-green-700">&#8377; {balance}</p>
+          <p className="mt-2 font-bold text-4xl text-green-700">&#8377; {balance}</p> 
         </div>
         <Link className="bg-white px-8 py-3 rounded-md flex shadown-xl font-semibold text-xl w-full sm:text-2xl" to={'/transactions'}>Transaction History 	&rarr;</Link>
         <User userId={user._id} />

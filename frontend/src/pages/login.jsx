@@ -11,6 +11,7 @@ import Footer from '../components/Footer'
 export function Login() {
 
   const [isCredentials, setIsCredentials] = useState(false);
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
   localStorage.removeItem('token')
 
@@ -19,13 +20,16 @@ export function Login() {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     try {
+      setLoading(true);
       const response = await axios.post('https://paynow-api.onrender.com/api/v1/user/login', data);
       const token = response.data.token;
+      (!response)?setLoading(false):setLoading(true);
 
       localStorage.setItem('token', token);
         navigate('/dashboard')
     }
     catch (err) {
+      setLoading(false)
       console.log("Error: ", err);
       setIsCredentials(true)
     }
@@ -42,7 +46,7 @@ export function Login() {
         {isCredentials?(
           <div className='text-red-500 text-sm'>Incorrect username or password !!</div>
         ):null}
-        <Button buttonText={'Sign in'} />
+        <Button buttonText={'Sign in'} loading={loading} />
       </form>
       <BottomText label={'Didn\'t have a account?'} buttonText={'Sign up'} to={'/signup'} />
     </div>
