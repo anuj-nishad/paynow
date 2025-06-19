@@ -27,9 +27,7 @@ router.post('/signup', async (req, res) => {
       username: response.username,
       id: response.id
     }
-
-    //---------------Generate Random Amount in his Bank Balance
-
+
     await new Account({
       userId: response.id,
       balance: Math.round((1 + Math.random() * 1000) * 100) / 100
