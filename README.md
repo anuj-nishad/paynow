@@ -15,7 +15,7 @@
 ## Features ✨
 
 - Secure **User Authentication** (Signup/Login)  
-- **Balance Checks** in real-time  
+- **Balance Checks** in real-time dummy money  
 - **Dummy Money Transfers** between users  
 - **Transaction History** tracking  
 - **Profile Management**  
@@ -28,4 +28,4 @@
 - **Frontend:** React  
 - **Backend:** Node.js  
 - **Database:** MongoDB  
-- **Authentication:** JWT / Custom auth  
+- **Authentication:** JWT
