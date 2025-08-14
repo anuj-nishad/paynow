@@ -5,8 +5,7 @@ const db = require('./db');
 const port = process.env.PORT || 3000;
 const cors = require('cors');
 const bodyparser = require('body-parser');
-
-const { default: job } = require('./crons');
+const job = require('./crons');
 
 if (process.env.NODE_ENV === "production") job.start();
 
